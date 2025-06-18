@@ -1,0 +1,4 @@
+python-telegram-bot    # async Bot API client
+python-dotenv                # load .env into env vars
+psutil                       # uptime, CPU temp, disk stats
+gpiozero                     # camera button / future GPIO work (optional)

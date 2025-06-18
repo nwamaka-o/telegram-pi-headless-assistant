@@ -1,0 +1,23 @@
+# /etc/systemd/system/telegram_pi_bot.service
+[Unit]
+Description=Telegram Headless Assistant (bot.py)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/telegram-pi-headless-assistant
+
+# --- THIS is the only line that changes ? ---------------------------
+ExecStart=/home/pi/telegram-pi-headless-assistant/.venv/bin/python bot.py
+# --------------------------------------------------------------------
+
+Restart=on-failure
+RestartSec=5s
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-/home/pi/telegram-pi-headless-assistant/.env    # optional
+
+[Install]
+WantedBy=multi-user.target
+
